@@ -1,0 +1,20 @@
+{
+  "name": "FEen",
+  "description": "",
+  "main": "",
+  "authors": [
+    "LucaslEliane <517197934@qq.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "es6"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
