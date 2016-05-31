@@ -1,6 +1,6 @@
 @waterfall-padding:2%;
 
-html {
+html,body {
     padding: 0;
     margin: 0;
 }
@@ -15,6 +15,18 @@ html {
     height: @height;
     width: @width;
     padding-bottom: @padding;
+}
+.transition (@action,@seconds) {
+    -webkit-transition: @action @seconds;
+    -moz-transition: @action @seconds;
+    -ms-transition: @action @seconds;
+    -o-transition: @action @seconds;
+    transition: @action @seconds;
+}
+.show (@opacity) {
+    .transition(all,1s);
+    opacity: @opacity;
+    width: 100%;
 }
 
 .lucas-album {
@@ -34,5 +46,42 @@ html {
     }
     .waterfall-5 {
         .waterfall-layout(@waterfall-padding,5);
+    }
+}
+.overlay {
+    width: 0;
+    height: 100%;
+    background-color: grey;
+    position:fixed;
+    z-index: 20;
+    opacity: 0;
+    .transition(all,1s);
+}
+.previewImage {
+    width: 0;
+    height: 100%;
+    background-color: transparent;
+    position:fixed;
+    z-index: 22;
+    opacity: 0;
+    .transition(all,1s);
+    text-align: center;
+    img {
+        margin-top: 5%;
+        height: 70%;
+    }
+}
+.overlayShow {
+    .show(0.5);
+}
+.previewShow {
+    .show(1);
+}
+.hidden {
+    .transition(all,1s);
+    opacity: 0;
+    width: 0;
+    img {
+        width: 0;
     }
 }

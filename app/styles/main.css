@@ -1,4 +1,5 @@
-html {
+html,
+body {
   padding: 0;
   margin: 0;
 }
@@ -30,4 +31,65 @@ html {
   padding-left: 2%;
   padding-top: 2%;
   float: left;
+}
+.overlay {
+  width: 0;
+  height: 100%;
+  background-color: grey;
+  position: fixed;
+  z-index: 20;
+  opacity: 0;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+}
+.previewImage {
+  width: 0;
+  height: 100%;
+  background-color: transparent;
+  position: fixed;
+  z-index: 22;
+  opacity: 0;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  text-align: center;
+}
+.previewImage img {
+  margin-top: 5%;
+  height: 70%;
+}
+.overlayShow {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  opacity: 0.5;
+  width: 100%;
+}
+.previewShow {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  opacity: 1;
+  width: 100%;
+}
+.hidden {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  opacity: 0;
+  width: 0;
+}
+.hidden img {
+  width: 0;
 }
