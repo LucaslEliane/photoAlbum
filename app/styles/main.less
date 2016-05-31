@@ -23,10 +23,10 @@ html,body {
     -o-transition: @action @seconds;
     transition: @action @seconds;
 }
-.show (@opacity) {
+.show (@opacity,@width) {
     .transition(all,1s);
     opacity: @opacity;
-    width: 100%;
+    width: @width;
 }
 
 .lucas-album {
@@ -66,22 +66,25 @@ html,body {
     opacity: 0;
     .transition(all,1s);
     text-align: center;
-    img {
-        margin-top: 5%;
-        height: 70%;
-    }
 }
 .overlayShow {
-    .show(0.5);
+    .show(0.5,100%);
 }
 .previewShow {
-    .show(1);
+    .show(1,100%);
+}
+.imageShow {
+    .show(1,auto);
+    height: 70%;
+    margin-top: 5%;
+}
+.imageHidden {
+    .transition(all,1s);
+    opacity: 0;
+    height: 0;
 }
 .hidden {
     .transition(all,1s);
     opacity: 0;
     width: 0;
-    img {
-        width: 0;
-    }
 }

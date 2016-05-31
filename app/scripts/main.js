@@ -18,7 +18,7 @@
 		contentElement,
 		imageCount,
 		layout,
-		columnCount = 3,
+		columnCount = 5,
 		column = [],
 		columnHeight = [],
 		overlay,
@@ -101,6 +101,7 @@
 		previewDiv = document.createElement('div');
 		previewDiv.setAttribute('class','previewImage');
 		previewImage = document.createElement('img');
+		previewImage.setAttribute('class','imageHidden');
 		this.addClass(overlay,'hidden');
 		this.addClass(previewDiv,'hidden');
 		document.getElementsByTagName('body')[0].appendChild(overlay);
@@ -109,8 +110,10 @@
 		previewDiv.addEventListener('click',function () {
 			that.removeClass(overlay,'overlayShow');
 			that.removeClass(previewDiv,'previewShow');
+			that.removeClass(previewImage,'imageShow');
 			that.addClass(overlay,'hidden');
 			that.addClass(previewDiv,'hidden');
+			that.addClass(previewImage,'imageHidden');
 		});
 	};
 	/**
@@ -182,8 +185,10 @@
 			previewImage.setAttribute('src',src);
 			that.removeClass(overlay,'hidden');
 			that.removeClass(previewDiv,'hidden');
+			that.removeClass(previewImage,'imageHidden');
 			that.addClass(overlay,'overlayShow');
 			that.addClass(previewDiv,'previewShow');
+			that.addClass(previewImage,'imageShow');
 		});
 	};
 
