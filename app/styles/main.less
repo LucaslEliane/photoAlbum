@@ -1,0 +1,38 @@
+@waterfall-padding:2%;
+
+html {
+    padding: 0;
+    margin: 0;
+}
+.waterfall-layout (@image-gap,@img-count){
+    width: (100%-@image-gap*(@img-count+1))/@img-count;
+    height: auto;
+    padding-left: @image-gap;
+    padding-top: @image-gap;
+    float: left;
+}
+.image-specification (@height,@width,@padding) {
+    height: @height;
+    width: @width;
+    padding-bottom: @padding;
+}
+
+.lucas-album {
+    .waterfall {
+        li {
+            list-style: none;
+        }
+        img {
+            .image-specification(auto,100%,@waterfall-padding);
+        }
+    }
+    .waterfall-3 {
+        .waterfall-layout(@waterfall-padding,3);
+    }
+    .waterfall-4 {
+        .waterfall-layout(@waterfall-padding,4);
+    }
+    .waterfall-5 {
+        .waterfall-layout(@waterfall-padding,5);
+    }
+}
