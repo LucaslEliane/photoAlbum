@@ -11,6 +11,26 @@ html,body {
     padding-top: @image-gap;
     float: left;
 }
+.puzzle-size (@height,@width) {
+    height: @height;
+    width: @width;
+}
+.puzzle-div {
+    div {
+        float: left;
+        overflow: hidden;
+    }
+    .vertical {
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: center center;
+    }
+    .horizontal {
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center center;
+    }
+}
 .image-specification (@height,@width,@padding) {
     height: @height;
     width: @width;
@@ -28,7 +48,10 @@ html,body {
     opacity: @opacity;
     width: @width;
 }
-
+.lucas-album>div {
+    width:800px;
+    height:600px;
+}
 .lucas-album {
     .waterfall {
         li {
@@ -46,6 +69,78 @@ html,body {
     }
     .waterfall-5 {
         .waterfall-layout(@waterfall-padding,5);
+    }
+    .barrel {
+        padding:0;
+        margin:0;
+        width:100%;
+        display: inline-block;
+        img {
+            height: 99.5%;
+            width: auto;
+            float: left;
+        }
+    }
+    .puzzle-6 {
+        .puzzle-div();
+        div:nth-child(1) {
+            .puzzle-size(66.5%,66.7%);
+        }
+        div:nth-child(2),div:nth-child(3),div:nth-child(4),div:nth-child(5),div:nth-child(6){
+            .puzzle-size(33.3%,33.3%);
+        }
+    }
+    .puzzle-5 {
+        .puzzle-div();
+        div:nth-child(1) {
+            .puzzle-size(66.5%,66.7%);
+        }
+        div:nth-child(2),div:nth-child(3) {
+            .puzzle-size(50%,33.3%);
+        }
+        div:nth-child(3) {
+            float:right;
+        }
+        div:nth-child(4),div:nth-child(5){
+            .puzzle-size(33.3%,33.3%);
+        }
+    }
+    .puzzle-4 {
+        .puzzle-div();
+        div {
+            .puzzle-size(50%,50%);
+        }
+    }
+    .puzzle-3 {
+        .puzzle-div();
+        div:first-child {
+            .puzzle-size(100%,66.7%);
+        }
+        div:nth-child(2),div:nth-child(3) {
+            .puzzle-size(50%,33.3%);
+        }
+    }
+    .puzzle-2 {
+        .puzzle-div();
+        div:first-child {
+            .puzzle-size(100%,67%);
+            -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+        }
+        div:nth-child(2) {
+            .puzzle-size(100%, 67%);
+            -webkit-clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+            position: relative;
+            left: 33%;
+            top: -100%;
+        }
+    }
+    .puzzle-1 {
+        .puzzle-div();
+        div:first-child {
+            .puzzle-size(100%,100%);
+        }
     }
 }
 .overlay {

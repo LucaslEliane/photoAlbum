@@ -3,6 +3,24 @@ body {
   padding: 0;
   margin: 0;
 }
+.puzzle-div div {
+  float: left;
+  overflow: hidden;
+}
+.puzzle-div .vertical {
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+}
+.puzzle-div .horizontal {
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center center;
+}
+.lucas-album > div {
+  width: 800px;
+  height: 600px;
+}
 .lucas-album .waterfall li {
   list-style: none;
 }
@@ -31,6 +49,162 @@ body {
   padding-left: 2%;
   padding-top: 2%;
   float: left;
+}
+.lucas-album .barrel {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: inline-block;
+}
+.lucas-album .barrel img {
+  height: 99.5%;
+  width: auto;
+  float: left;
+}
+.lucas-album .puzzle-6 div {
+  float: left;
+  overflow: hidden;
+}
+.lucas-album .puzzle-6 .vertical {
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+}
+.lucas-album .puzzle-6 .horizontal {
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center center;
+}
+.lucas-album .puzzle-6 div:nth-child(1) {
+  height: 66.5%;
+  width: 66.7%;
+}
+.lucas-album .puzzle-6 div:nth-child(2),
+.lucas-album .puzzle-6 div:nth-child(3),
+.lucas-album .puzzle-6 div:nth-child(4),
+.lucas-album .puzzle-6 div:nth-child(5),
+.lucas-album .puzzle-6 div:nth-child(6) {
+  height: 33.3%;
+  width: 33.3%;
+}
+.lucas-album .puzzle-5 div {
+  float: left;
+  overflow: hidden;
+}
+.lucas-album .puzzle-5 .vertical {
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+}
+.lucas-album .puzzle-5 .horizontal {
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center center;
+}
+.lucas-album .puzzle-5 div:nth-child(1) {
+  height: 66.5%;
+  width: 66.7%;
+}
+.lucas-album .puzzle-5 div:nth-child(2),
+.lucas-album .puzzle-5 div:nth-child(3) {
+  height: 50%;
+  width: 33.3%;
+}
+.lucas-album .puzzle-5 div:nth-child(3) {
+  float: right;
+}
+.lucas-album .puzzle-5 div:nth-child(4),
+.lucas-album .puzzle-5 div:nth-child(5) {
+  height: 33.3%;
+  width: 33.3%;
+}
+.lucas-album .puzzle-4 div {
+  float: left;
+  overflow: hidden;
+}
+.lucas-album .puzzle-4 .vertical {
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+}
+.lucas-album .puzzle-4 .horizontal {
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center center;
+}
+.lucas-album .puzzle-4 div {
+  height: 50%;
+  width: 50%;
+}
+.lucas-album .puzzle-3 div {
+  float: left;
+  overflow: hidden;
+}
+.lucas-album .puzzle-3 .vertical {
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+}
+.lucas-album .puzzle-3 .horizontal {
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center center;
+}
+.lucas-album .puzzle-3 div:first-child {
+  height: 100%;
+  width: 66.7%;
+}
+.lucas-album .puzzle-3 div:nth-child(2),
+.lucas-album .puzzle-3 div:nth-child(3) {
+  height: 50%;
+  width: 33.3%;
+}
+.lucas-album .puzzle-2 div {
+  float: left;
+  overflow: hidden;
+}
+.lucas-album .puzzle-2 .vertical {
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+}
+.lucas-album .puzzle-2 .horizontal {
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center center;
+}
+.lucas-album .puzzle-2 div:first-child {
+  height: 100%;
+  width: 67%;
+  -webkit-clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+}
+.lucas-album .puzzle-2 div:nth-child(2) {
+  height: 100%;
+  width: 67%;
+  -webkit-clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 0 100%);
+  position: relative;
+  left: 33%;
+  top: -100%;
+}
+.lucas-album .puzzle-1 div {
+  float: left;
+  overflow: hidden;
+}
+.lucas-album .puzzle-1 .vertical {
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center center;
+}
+.lucas-album .puzzle-1 .horizontal {
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center center;
+}
+.lucas-album .puzzle-1 div:first-child {
+  height: 100%;
+  width: 100%;
 }
 .overlay {
   width: 0;
