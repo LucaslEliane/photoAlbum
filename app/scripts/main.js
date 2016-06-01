@@ -314,7 +314,12 @@
 			external.addClickEvent(imageNode);
 		};
 	};
-
+	/**
+	 * 拼图布局包装函数
+	 * @param external 外部this指针
+	 * @param imageCount 图片数目
+	 * @constructor
+     */
 	var Puzzle = function(external,imageCount) {
 		var puzzleCount = [],
 			aspectRatioRectangle = 1.5,
@@ -324,6 +329,9 @@
 			this.getPuzzleCount();
 		};
 
+		/**
+		 * 获取应该使用多少组拼图
+		 */
 		Puzzle.prototype.getPuzzleCount = function () {
 			var count = Math.ceil(imageCount/6);
 			for (var i=0; i<count-1; i++) {
@@ -345,7 +353,13 @@
 				}
 			}
 		};
-
+		/**
+		 * 为每个拼图进行css类设置
+		 * @param countGroup 属于第几个拼图组
+		 * @param array 属于第几组图片
+		 * @param offset 在组中的偏移量
+         * @param aspectRatio 目标宽高比，用来格式化拉伸方式
+         */
 		Puzzle.prototype.puzzleCountHelp = function(countGroup,array,offset,aspectRatio) {
 			var divTmp,
 				ratio;
