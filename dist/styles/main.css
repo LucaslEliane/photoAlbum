@@ -17,9 +17,9 @@ body {
   background-size: auto 100%;
   background-position: center center;
 }
-.lucas-album > div {
-  width: 800px;
-  height: 600px;
+.lucas-album {
+  width: 600px;
+  height: 800px;
 }
 .lucas-album .waterfall li {
   list-style: none;

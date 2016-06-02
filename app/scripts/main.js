@@ -2,9 +2,9 @@
 	'use strict';
 
 	/**
- 	 * 公有变量以及初始化方法
- 	 * @return {[type]} [description]
- 	 */
+	 * 构造方法
+	 * @constructor
+     */
 	function LucasAlbum() {
 		this.LAYOUT = {
 			PUZZLE    :   1,
@@ -30,30 +30,13 @@
 	LucasAlbum.prototype.init = function() {
 		this.getAlbumElement();
 		this.createOverlay();
-		switch (layout) {
-			case 1:
-				usageLayout = new Puzzle(this,imageCount);
-				usageLayout.init();
-				break;
-			case 2:
-				usageLayout = new Waterfall(this,columnCount);
-				usageLayout.init();
-				break;
-			case 3:
-				usageLayout = new Barrel(this,width,4);
-				usageLayout.init();
-				break;
-			default:
-				usageLayout = new Waterfall(this,columnCount);
-				usageLayout.init();
-				break;
-		}
+		this.getLayout();
 	};
 
 	/**
- 	 * 获取相册的div元素以及所有div元素中的img元素
-	 * @return {[type]} [description]
- 	 */
+	 * 公有方法，初始化构建相册，只返回相册的DOM对象
+	 * @returns {HTML Element} 相册DIV元素的HTML Element
+     */
 	LucasAlbum.prototype.getAlbumElement = function() {
 		var tmp,
 			ratio;
@@ -84,11 +67,44 @@
 		}
 		layout = this.LAYOUT[contentElement.getAttribute('category')];
 		imageCount = imgArray.length;
+		return contentElement;
 	};
 	/**
-	 * 为某个元素添加一个类
+	 * 公有方法，返回当前正在使用的布局方式对象
+	 * @returns {Object}
+     */
+	LucasAlbum.prototype.getLayout = function () {
+		if (usageLayout) {
+			return usageLayout;
+		} else {
+			switch (layout) {
+				case 1:
+					usageLayout = new Puzzle(this,imageCount);
+					usageLayout.init();
+					break;
+				case 2:
+					usageLayout = new Waterfall(this,columnCount);
+					usageLayout.init();
+					break;
+				case 3:
+					usageLayout = new Barrel(this,width,4);
+					usageLayout.init();
+					break;
+				default:
+					usageLayout = new Waterfall(this,columnCount);
+					usageLayout.init();
+					break;
+			}
+		}
+	};
+	LucasAlbum.prototype.addImage = function(image) {
+		usageLayout.addImage(image);
+	};
+	/**
+	 * 公有方法，为某个元素添加一个类
 	 * @param element 需要添加类的dom元素
 	 * @param value	需要添加的类名
+	 * @return {HTML Element} 添加完类名的DOM元素
      */
 	LucasAlbum.prototype.addClass = function (element,value) {
 		var className,
@@ -106,11 +122,13 @@
 		} else {
 			element.setAttribute('class',value);
 		}
+		return element;
 	};
 	/**
-	 * 为某个dom元素删除一个类名
+	 * 公有方法，为某个dom元素删除一个类名
 	 * @param element 需要删除类名的dom元素
 	 * @param value 删除的类名
+	 * @return {HTML Element} 返回删除完类名的DOM元素
      */
 	LucasAlbum.prototype.removeClass = function (element,value) {
 		var className;
@@ -119,12 +137,14 @@
 			className = className.replace(value,'');
 			element.setAttribute('class',className);
 		}
+		return element;
 	};
 	/**
 	 * 将某个元素插入到父元素的指定位置上
 	 * @param parent 父元素
 	 * @param child 要插入的子元素
      * @param n	位置下标
+	 * @return {HTML Element} 返回插入完的父元素
      */
 	LucasAlbum.prototype.insertAt = function (parent, child ,n ) {
 		if (n<0 || n>parent.childNodes.length) {
@@ -134,6 +154,7 @@
 		} else {
 			parent.insertBefore(child,parent.childNodes[n]);
 		}
+		return parent;
 	};
 	/**
 	 * 创建遮罩层，并且为遮罩层添加点击事件
@@ -255,6 +276,20 @@
 			column[index].appendChild(liElement);
 			external.addClickEvent(imageElement);
 		};
+		/**
+		 * 图片挂载方法，为用户提供的接口
+		 * @param image 图片URL的数组或者是单个URL
+         */
+		Waterfall.prototype.addImage = function(image) {
+			var that = this;
+			if (typeof image === 'string') {
+				that.appendImage(image);
+			} else if (image.length > 1) {
+				image.forEach(function (value) {
+					that.appendImage(value);
+				});
+			}
+		};
 	};
 	/**
 	 * 木桶布局包装函数
@@ -267,6 +302,7 @@
 
 		var totalWidth=0,
 			rows,
+			count,
 			rowsArray = [],
 			popArray = [];
 
@@ -285,8 +321,7 @@
 		 * 设置木桶布局每行元素，构造每行的行节点
 		 */
 		Barrel.prototype.setRows = function() {
-			var count,
-				tmp = imgRatio;
+			var tmp = imgRatio;
 			for (var i = 0; i<rows ; i++) {
 				rowsArray[i] = document.createElement('ul');
 				rowsArray[i].setAttribute('class','barrel');
@@ -337,6 +372,7 @@
 			for (var i=0; i<count-1; i++) {
 				puzzleCount[i] = document.createElement('div');
 				puzzleCount[i].setAttribute('class','puzzle-6');
+				puzzleCount[i].style.height = width/1.5+'px';
 				contentElement.appendChild(puzzleCount[i]);
 				for (var j=0; j<6; j++) {
 					this.puzzleCountHelp(i,i,j,aspectRatioRectangle);
@@ -344,6 +380,7 @@
 			}
 			puzzleCount[count] = document.createElement('div');
 			puzzleCount[count].setAttribute('class','puzzle-'+imageCount%6);
+			puzzleCount[count].style.height = width/1.5+'px';
 			contentElement.appendChild(puzzleCount[count]);
 			for (var k=0;k<imageCount%6;k++) {
 				if ((imageCount%6 === 2)||((imageCount%6 === 5||imageCount%6 ===3) && (k === 1 || k === 2))) {
